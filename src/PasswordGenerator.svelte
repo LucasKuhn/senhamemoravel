@@ -51,11 +51,11 @@
 	}
 
 	function addNumber() {
-		if (password === ' ') return;
 		if (shouldAddNumber) {
 			password = password + '-' + Math.floor(Math.random() * 10);
 		} else {
-			password = password.slice(0, -2);
+			password = password.replace(/\d$/, '');
+			password = password.replace(/-$/, '');
 		}
 	}
 
