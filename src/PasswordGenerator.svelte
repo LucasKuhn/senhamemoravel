@@ -1,11 +1,13 @@
 <script>
 	import { onMount } from 'svelte';
-	
+
 	import unidecode from 'unidecode';
 
 	let words = [];
 	let password = ' ';
 	let isCopied = false;
+	let shouldCapitalize = false;
+	let shouldAddNumber = false;
 
 	onMount(() => {
 		fetch('/words.txt')
@@ -29,8 +31,32 @@
 		let selected = [getRandomWord(), getRandomWord(), getRandomWord()];
 		selected = selected.map((word) => unidecode(word));
 		password = selected.join('-');
-
+		capitalize();
+		addNumber();
 		button.removeAttribute('aria-busy');
+	}
+
+	function capitalize() {
+		if (shouldCapitalize) {
+			password = password
+				.split('-')
+				.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+				.join('-');
+		} else {
+			password = password
+				.split('-')
+				.map((word) => word.charAt(0).toLowerCase() + word.slice(1))
+				.join('-');
+		}
+	}
+
+	function addNumber() {
+		if (password === ' ') return;
+		if (shouldAddNumber) {
+			password = password + '-' + Math.floor(Math.random() * 10);
+		} else {
+			password = password.slice(0, -2);
+		}
 	}
 
 	async function copyPasswordToClipboard() {
@@ -38,7 +64,6 @@
 		setTimeout(() => {
 			isCopied = false;
 		}, 150);
-		// Get current password from whatever value is on the field, in case the user changed it manually
 		password = document.querySelector('input').value;
 		navigator.clipboard.writeText(password);
 	}
@@ -46,11 +71,36 @@
 
 <article>
 	<h1>Gerador de senha memorável</h1>
-	<div class="grid">
-		<input type="text" disabled={isCopied} value={password}/>
-		<button class="secondary" on:click={copyPasswordToClipboard}>copiar</button>
+
+	<div class="mygrid">
+		<div>
+			<input type="text" disabled={isCopied} value={password} />
+		</div>
+		<div>
+			<button class="secondary" on:click={copyPasswordToClipboard}>copiar</button>
+		</div>
 	</div>
 	<button on:click={generatePassword}> Gerar </button>
+	<label for="capitalize">
+		<input
+			id="capitalize"
+			type="checkbox"
+			role="switch"
+			bind:checked={shouldCapitalize}
+			on:change={capitalize}
+		/>
+		Primeira letra maiúscula
+	</label>
+	<label for="add_number">
+		<input
+			id="add_number"
+			type="checkbox"
+			role="switch"
+			bind:checked={shouldAddNumber}
+			on:change={addNumber}
+		/>
+		Adicionar um número
+	</label>
 </article>
 
 <style>
@@ -58,7 +108,7 @@
 		text-align: center;
 	}
 
-	.grid {
+	.mygrid {
 		display: grid;
 		grid-template-columns: 1fr auto;
 		grid-gap: 10px;
