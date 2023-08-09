@@ -1,6 +1,7 @@
 <script>
-	import unidecode from 'unidecode';
 	import { onMount } from 'svelte';
+	
+	import unidecode from 'unidecode';
 
 	let words = [];
 	let password = ' ';
