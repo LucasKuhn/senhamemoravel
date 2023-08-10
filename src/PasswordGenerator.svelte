@@ -114,4 +114,11 @@
 		grid-gap: 10px;
 		align-items: center;
 	}
+	@media (max-width: 600px) {
+    .mygrid {
+      grid-template-columns: 1fr;
+		grid-gap: 0;
+
+    }
+  }
 </style>
