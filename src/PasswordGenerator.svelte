@@ -83,7 +83,7 @@
 			<input type="text" disabled={isCopied} value={password} />
 		</div>
 		<div>
-			<button class="secondary" on:click={copyPasswordToClipboard}>copiar</button>
+			<button class="secondary" on:click={copyPasswordToClipboard}>Copiar</button>
 		</div>
 	</div>
 	<button on:click={generatePassword}> Gerar </button>
