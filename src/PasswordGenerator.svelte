@@ -51,6 +51,9 @@
 	}
 
 	function addNumber() {
+		if (password === ' ') {
+			return;
+		}
 		if (shouldAddNumber) {
 			password = password + '-' + Math.floor(Math.random() * 10);
 		} else {
@@ -70,7 +73,10 @@
 </script>
 
 <article>
-	<h1>Gerador de senha memorável</h1>
+	<hgroup>
+		<h1>Gerador de senha</h1>
+		<h2>Senha memorável</h2>
+	</hgroup>
 
 	<div class="mygrid">
 		<div>
@@ -108,6 +114,10 @@
 		text-align: center;
 	}
 
+	h2 {
+		font-size: 1.5em;
+	}
+
 	.mygrid {
 		display: grid;
 		grid-template-columns: 1fr auto;
@@ -115,10 +125,9 @@
 		align-items: center;
 	}
 	@media (max-width: 600px) {
-    .mygrid {
-      grid-template-columns: 1fr;
-		grid-gap: 0;
-
-    }
-  }
+		.mygrid {
+			grid-template-columns: 1fr;
+			grid-gap: 0;
+		}
+	}
 </style>
