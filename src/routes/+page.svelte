@@ -2,11 +2,6 @@
 	import PasswordGenerator from '../PasswordGenerator.svelte';
 </script>
 
-<svelte:head>
-	<title>Senha memorável | Gerador de senhas fortes</title>
-	<meta name="description" content="Gerador de senhas fortes baseado em palavras" />
-</svelte:head>
-
 <main class="container">
 	<div style="width: 100%;">
 		<PasswordGenerator />
@@ -14,14 +9,17 @@
 		<article>
 			<details open>
 				<summary>Sobre</summary>
-				<br>
+				<br />
 				<p>
-					O gerador utiliza palavras reais para compor senhas que se destacam pela facilidade de memorização. Em vez de sequências aleatórias e complexas, aproveitamos a naturalidade com que nosso cérebro lembra de palavras, garantindo senhas que são simultaneamente seguras e intuitivas para recordar.
+					O gerador utiliza palavras reais para compor senhas que se destacam pela facilidade de
+					memorização. Em vez de sequências aleatórias e complexas, aproveitamos a naturalidade com
+					que nosso cérebro lembra de palavras, garantindo senhas que são simultaneamente seguras e
+					intuitivas para recordar.
 				</p>
 			</details>
 			<details>
 				<summary>Entenda mais</summary>
-				<br>
+				<br />
 				<p>
 					Uma senha longa é frequentemente mais segura do que uma curta, e aqui está o porquê:
 					imagine sua senha como uma chave. Uma chave pequena pode ser facilmente copiada ou
