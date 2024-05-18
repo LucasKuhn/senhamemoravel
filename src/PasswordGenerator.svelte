@@ -8,8 +8,8 @@
 	let words = [];
 	let password = ' ';
 	let isCopied = false;
-	let shouldCapitalize = false;
-	let shouldAddNumber = false;
+	let shouldCapitalize = true;
+	let shouldAddNumber = true;
 	let letters = [];
 	let animation = null;
 
